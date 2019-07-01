@@ -13,4 +13,14 @@ post '/' do
 
   @title = "Thank you!"
   @message = "Уважаемый #{@user_name}, мы ждём вас #{@date_time}"
+
+  f = File.open 'users.txt', 'a'
+  f.chmod 777
+  f.write"User:#{@user_name},#{@phone},#{@date_time}"
+  f.close
+  erb :message
+
+
 end
+
+
