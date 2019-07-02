@@ -15,7 +15,7 @@ post '/' do
   @message = "Уважаемый #{@user_name}, мы ждём вас #{@date_time}"
 
   # запишем в файл то, что ввёл клиент
-  f = File.open 'users.txt', 'a'
+  f = File.open './public/users.txt', 'a'
   f.write "User: #{@user_name}, phone: #{@phone}, date and time: #{@date_time}.\n"
   f.close
 
