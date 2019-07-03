@@ -1,13 +1,11 @@
-<h1>
-  Welcome to barbershop!
-</h1>
+<h>HI</h>
 
-<p> we are open </p>
+<p>You typed:<%=@login %></p>
+<p>Your password: <%=@password %></p>
+<p>Your access:<%=@access_denied_title%></p>
 
-<form action="/" method="POST">
-  Your name:<br> <input type="text" name="user_name"><br>
-  Your phone:<br> <input type="text" name="phone"><br>
-  Date and time:<br> <input type="text" name="date_time"><br>
-
-  <input type="submit">
-</form>
+<form action ='/' method ='POST'>
+  <input type = 'login' name ='plogin'/>
+  <input type = 'password' name ='ppass'/>
+  <input type = 'submit'/>
+</form >

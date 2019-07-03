@@ -4,8 +4,23 @@ get '/' do
   erb :index
 end
 
-# спросим Имя, номер телефона и дату, когда придёт клиент.
+
+# спросим Имя, Пароль для входа.
 post '/' do
+  @login = params[:plogin]
+  @password = params[:ppass]
+  erb :index
+# проверим логин и пароль, и пускаем внутрь или нет:
+  if @login == 'admin' && @password == 'pass'
+    erb :reception_list
+  else
+    @access_denied_title ='Access denied'
+    erb :index
+  end
+end
+
+# спросим Имя, номер телефона и дату, когда придёт клиент.
+post '/reception_list' do
   # user_name, phone, date_time
   @user_name = params[:user_name]
   @phone = params[:phone]
@@ -22,7 +37,7 @@ post '/' do
   erb :message
 end
 
-# Добавить зону /admin где по паролю будет выдаваться список тех, кто записался (из users.txt)
+# Зона /admin где по паролю будет выдаваться список тех, кто записался (из users.txt)
 
 # sinatra text file sso
 get '/admin' do
