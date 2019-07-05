@@ -65,11 +65,14 @@ post '/registration' do
   @login_reg = params[:login_reg]
   @password_reg = params[:password_reg]
 
-
+  # Добавил ДБ для сохранения логинов и паролей
   db =SQLite3::Database.new '/db/barbershop_db'
+  db.execute "INSERT INTO access VALUES(3,'#{@login_reg}','#{@password_reg}')"
+  db.close
+
   f = File.open './public/users_reg.txt', 'a'
   f.write "User: #{@login_reg}, pass: #{@password_reg}.\n"
   f.close
 
-    erb :admin
+    erb :index
   end
