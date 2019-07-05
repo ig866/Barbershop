@@ -1,4 +1,6 @@
 require 'sinatra'
+require 'sqlite3'
+
 
 get '/' do
   erb :index
@@ -58,3 +60,16 @@ post '/admin' do
     erb :admin
   end
 end
+
+post '/registration' do
+  @login_reg = params[:login_reg]
+  @password_reg = params[:password_reg]
+
+
+  db =SQLite3::Database.new '/db/barbershop_db'
+  f = File.open './public/users_reg.txt', 'a'
+  f.write "User: #{@login_reg}, pass: #{@password_reg}.\n"
+  f.close
+
+    erb :admin
+  end
